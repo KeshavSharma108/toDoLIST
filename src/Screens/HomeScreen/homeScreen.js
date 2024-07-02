@@ -116,12 +116,12 @@ const HomeScreen = ({ navigation }) => {
         <FlatList
           data={filteredItems}
           renderItem={({ item, index }) => (
-          
-         
             <View style={styles.itemContainer}>
-              <View style={styles.listContainer}><Text style={styles.itemText}>Title:{item.title} </Text>
-              <Text style={styles.itemText}>Description:{item.desc} </Text></View>
-         
+              <View style={styles.listContainer}>
+                <Text style={styles.itemText}>Title:{item.title} </Text>
+                <Text style={styles.itemText}>Description:{item.desc} </Text>
+              </View>
+
               {mark.includes(item) !== true ? (
                 <View style={styles.buttonContainer}>
                   <TouchableOpacity
@@ -267,9 +267,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 20,
     bottom: 70,
-  },listContainer:{
-    width:300,
-    justifyContent:'center',
-    alignItems:'center'
-  }
+  },
+  listContainer: {
+    width: 300,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

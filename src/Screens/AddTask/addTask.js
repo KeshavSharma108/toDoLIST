@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { updatetaskList } from "../../ReduxState/mainState";
-import { Entypo } from '@expo/vector-icons';
-const AddTask = ({navigation}) => {
+import { Entypo } from "@expo/vector-icons";
+const AddTask = ({ navigation }) => {
   const [title, setTitle] = useState("");
   const [titleError, setTitleError] = useState(false);
   const [desc, setDesc] = useState("");
@@ -52,52 +52,51 @@ const AddTask = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-    
-        <Pressable onPress={()=>navigation.goBack()} style={styles.backbutton}>
-      <Entypo name="back" size={24} color="black" />
+      <Pressable onPress={() => navigation.goBack()} style={styles.backbutton}>
+        <Entypo name="back" size={24} color="black" />
       </Pressable>
       <View style={styles.subContainer}>
-      <View style={styles.container}>
-        <Text>Title:</Text>
-        <TextInput
-          style={styles.titleInput}
-          maxLength={40}
-          editable
-          onChangeText={(text) => {
-            setTitle(text);
-            setTitleError();
-          }}
-          value={title}
-        />
-        {titleError ? (
-          <View>
-            <Text style={styles.ErrorStyle}>Please Enter Title</Text>
+        <View style={styles.container}>
+          <Text>Title:</Text>
+          <TextInput
+            style={styles.titleInput}
+            maxLength={40}
+            editable
+            onChangeText={(text) => {
+              setTitle(text);
+              setTitleError();
+            }}
+            value={title}
+          />
+          {titleError ? (
+            <View>
+              <Text style={styles.ErrorStyle}>Please Enter Title</Text>
+            </View>
+          ) : null}
+          <Text>Description:</Text>
+          <TextInput
+            style={styles.descInput}
+            numberOfLines={4}
+            editable
+            multiline
+            maxLength={150}
+            onChangeText={(text) => {
+              setDesc(text);
+              setDescError();
+            }}
+            value={desc}
+          />
+          {descError ? (
+            <View>
+              <Text style={styles.ErrorStyle}>Please Enter Description</Text>
+            </View>
+          ) : null}
+          <View style={styles.buttonContainer}>
+            <Pressable style={styles.buttonStyle} onPress={() => AddTask()}>
+              <Text>Add Task</Text>
+            </Pressable>
           </View>
-        ) : null}
-        <Text>Description:</Text>
-        <TextInput
-          style={styles.descInput}
-          numberOfLines={4}
-          editable
-          multiline
-          maxLength={150}
-          onChangeText={(text) => {
-            setDesc(text);
-            setDescError();
-          }}
-          value={desc}
-        />
-        {descError ? (
-          <View>
-            <Text style={styles.ErrorStyle}>Please Enter Description</Text>
-          </View>
-        ) : null}
-        <View style={styles.buttonContainer}>
-          <Pressable style={styles.buttonStyle} onPress={() => AddTask()}>
-            <Text>Add Task</Text>
-          </Pressable>
         </View>
-      </View>
       </View>
     </SafeAreaView>
   );
@@ -106,7 +105,7 @@ const AddTask = ({navigation}) => {
 export default AddTask;
 
 const styles = StyleSheet.create({
- mainContainer: {
+  mainContainer: {
     flex: 1,
     backgroundColor: "#05c46b",
   },
@@ -150,5 +149,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   ErrorStyle: { color: "red", marginBottom: 20 },
-  backbutton:{marginTop:40,marginHorizontal:20,width:30,justifyContent:'center',alignItems:'center'}
+  backbutton: {
+    marginTop: 40,
+    marginHorizontal: 20,
+    width: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

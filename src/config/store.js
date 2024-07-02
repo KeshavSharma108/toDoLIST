@@ -25,5 +25,4 @@ const store = configureStore({
 /* run the saga middleware with root saga */
 const persistor = persistStore(store);
 
-
 export { store, persistor };

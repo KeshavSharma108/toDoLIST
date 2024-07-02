@@ -1,13 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import * as TaskState from './mainState'
+import * as TaskState from "./mainState";
 
 const reducers = combineReducers({
-    task : TaskState.taskSliceReducer,
+  task: TaskState.taskSliceReducer,
+});
 
-})
-
-export {
-    reducers,
-    TaskState
-  
-}
+export { reducers, TaskState };

@@ -6,21 +6,18 @@ import {
   StyleSheet,
   TextInput,
   Pressable,
-  
 } from "react-native";
 import { updateEditList } from "../../ReduxState/mainState";
 import { useDispatch } from "react-redux";
-import { Entypo } from '@expo/vector-icons';
+import { Entypo } from "@expo/vector-icons";
 const EditTask = ({ route, navigation }) => {
   const dispatch = useDispatch();
   const { item, index } = route.params;
 
- 
   const [title, setTitle] = useState(item.title);
   const [titleError, setTitleError] = useState(false);
   const [desc, setDesc] = useState(item.desc);
   const [descError, setDescError] = useState(false);
-
 
   const editTask = () => {
     if (!title) {
@@ -51,53 +48,53 @@ const EditTask = ({ route, navigation }) => {
   };
 
   return (
-    <SafeAreaView  style={styles.mainContainer}>
-      <Pressable onPress={()=>navigation.goBack()} style={styles.backbutton}>
-      <Entypo name="back" size={24} color="black" />
+    <SafeAreaView style={styles.mainContainer}>
+      <Pressable onPress={() => navigation.goBack()} style={styles.backbutton}>
+        <Entypo name="back" size={24} color="black" />
       </Pressable>
 
       <View style={styles.subContainer}>
-      <View style={styles.container}>
-        <Text>Title:</Text>
-        <TextInput
-          style={styles.titleInput}
-          maxLength={40}
-          editable
-          onChangeText={(text) => {
-            setTitle(text);
-            setTitleError();
-          }}
-          value={title}
-        />
-        {titleError ? (
-          <View>
-            <Text style={styles.ErrorStyle}>Please Enter Title</Text>
+        <View style={styles.container}>
+          <Text>Title:</Text>
+          <TextInput
+            style={styles.titleInput}
+            maxLength={40}
+            editable
+            onChangeText={(text) => {
+              setTitle(text);
+              setTitleError();
+            }}
+            value={title}
+          />
+          {titleError ? (
+            <View>
+              <Text style={styles.ErrorStyle}>Please Enter Title</Text>
+            </View>
+          ) : null}
+          <Text>Description:</Text>
+          <TextInput
+            style={styles.descInput}
+            numberOfLines={4}
+            editable
+            multiline
+            maxLength={150}
+            onChangeText={(text) => {
+              setDesc(text);
+              setDescError();
+            }}
+            value={desc}
+          />
+          {descError ? (
+            <View>
+              <Text style={styles.ErrorStyle}>Please Enter Description</Text>
+            </View>
+          ) : null}
+          <View style={styles.buttonContainer}>
+            <Pressable style={styles.buttonStyle} onPress={() => editTask()}>
+              <Text>Edit Task</Text>
+            </Pressable>
           </View>
-        ) : null}
-        <Text>Description:</Text>
-        <TextInput
-          style={styles.descInput}
-          numberOfLines={4}
-          editable
-          multiline
-          maxLength={150}
-          onChangeText={(text) => {
-            setDesc(text);
-            setDescError();
-          }}
-          value={desc}
-        />
-        {descError ? (
-          <View>
-            <Text style={styles.ErrorStyle}>Please Enter Description</Text>
-          </View>
-        ) : null}
-        <View style={styles.buttonContainer}>
-          <Pressable style={styles.buttonStyle} onPress={() => editTask()}>
-            <Text>Edit Task</Text>
-          </Pressable>
         </View>
-      </View>
       </View>
     </SafeAreaView>
   );
@@ -106,10 +103,10 @@ const EditTask = ({ route, navigation }) => {
 export default EditTask;
 
 const styles = StyleSheet.create({
-mainContainer:{
-  flex: 1,
-  backgroundColor: "#36BA98",
-},
+  mainContainer: {
+    flex: 1,
+    backgroundColor: "#36BA98",
+  },
   subContainer: {
     flex: 1,
     backgroundColor: "#36BA98",
@@ -150,5 +147,11 @@ mainContainer:{
     borderRadius: 5,
   },
   ErrorStyle: { color: "red", marginBottom: 20 },
-  backbutton:{marginTop:40,marginHorizontal:20,width:30,justifyContent:'center',alignItems:'center'}
+  backbutton: {
+    marginTop: 40,
+    marginHorizontal: 20,
+    width: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
